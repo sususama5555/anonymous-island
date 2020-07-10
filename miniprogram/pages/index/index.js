@@ -6,12 +6,24 @@ Page({
    */
   data: {
     cardList: [{
+        avatar: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
         name: '胖胖',
-        reviewTag: false
+        createDate: [2020, 1, 1],
+        info: '折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！',
+        image: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
+        starTag:'true',
+        watchNum:99,
+        starNum:88,
+        reviewNum:77
       },
       {
+        avatar: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
         name: '胖胖2',
-        reviewTag: false
+        createDate: [2020, 1, 1],
+        info: '折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！',
+        watchNum:66,
+        starNum:55,
+        reviewNum:44
       }
     ]
   },
@@ -21,15 +33,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-
-  showReview: function (e) {
-    let cardList = this.data.cardList
-    let cardIndex = e.currentTarget.dataset.cardindex
-    cardList[cardIndex].reviewTag = !cardList[cardIndex].reviewTag
-    this.setData({
-      cardList: cardList
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

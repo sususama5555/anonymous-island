@@ -1,0 +1,5 @@
+<!--miniprogram/pages/user/user.wxml-->
+<cu-custom bgColor="bg-gradual-pink">
+	<view slot="content">解忧小树屋</view>
+</cu-custom>
+
