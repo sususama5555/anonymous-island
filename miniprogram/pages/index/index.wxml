@@ -5,31 +5,31 @@
 
 
 <block wx:for="{{cardList}}" wx:key="index">
-	<view class="cu-card dynamic isCard">
-		<view class="cu-item shadow">
-			<view class="cu-list menu-avatar">
-				<view class="cu-item">
-					<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
-					<view class="content flex-sub">
-						<view>{{item.name}}</view>
-						<view class="text-gray text-sm flex justify-between">
-							{{item.createDate[0]}}年{{item.createDate[1]}}月{{item.createDate[2]}}日
+		<view class="cu-card dynamic isCard">
+			<view class="cu-item shadow" bindtap="toReview">
+				<view class="cu-list menu-avatar">
+					<view class="cu-item">
+						<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+						<view class="content flex-sub">
+							<view>{{item.name}}</view>
+							<view class="text-gray text-sm flex justify-between">
+								{{item.createDate[0]}}年{{item.createDate[1]}}月{{item.createDate[2]}}日
+							</view>
 						</view>
 					</view>
 				</view>
-			</view>
-			<view class="text-content">
-			{{item.info}}
-			</view>
-			<view class="grid flex-sub padding-lr col-1">
-				<view class="bg-img only-img" style="background-image:url({{item.image}});" wx:if="{{item.image}}">
+				<view class="text-content">
+					{{item.info}}
+				</view>
+				<view class="grid flex-sub padding-lr col-1">
+					<view class="bg-img only-img" style="background-image:url({{item.image}});" wx:if="{{item.image}}">
+					</view>
+				</view>
+				<view class="text-gray text-sm text-right padding">
+					<text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.watchNum}}
+					<text class="cuIcon-appreciatefill margin-lr-xs {{item.starTag?'text-red':''}}"></text> {{item.starNum}}
+					<text class="cuIcon-messagefill margin-lr-xs"></text> {{item.reviewNum}}
 				</view>
 			</view>
-			<view class="text-gray text-sm text-right padding">
-				<text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.watchNum}}
-				<text class="cuIcon-appreciatefill margin-lr-xs {{item.starTag?'text-red':''}}"></text> {{item.starNum}}
-				<text class="cuIcon-messagefill margin-lr-xs"></text> {{item.reviewNum}}
-			</view>
 		</view>
-	</view>
 </block>

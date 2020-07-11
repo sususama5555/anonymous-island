@@ -1,16 +1,19 @@
 //app.js
 App({
   globalData:{
-    StatusBar:''
+    StatusBar:'',
+    windowHeight:''
   },
 
   onLaunch: function () {
     wx.getSystemInfo({
       success: e => {
+        console.log(e);
         this.globalData.StatusBar = e.statusBarHeight;
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        this.globalData.windowHeight = e.windowHeight
       }
     })
 

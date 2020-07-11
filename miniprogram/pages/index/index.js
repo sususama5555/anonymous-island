@@ -28,6 +28,12 @@ Page({
     ]
   },
 
+  toReview:function(){
+    wx.navigateTo({
+      url: '/pages/review/review?arcID="213"'
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

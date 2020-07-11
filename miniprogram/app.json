@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/editor/editor",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/review/review"
   ],
   "tabBar": {
     "color": "#000000",
