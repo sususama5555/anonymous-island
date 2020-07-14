@@ -5,6 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    user:{
+      sdCount:99,
+      reviewCount:98,
+      starCount:97
+    }
 
   },
 
@@ -12,9 +17,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
+  getUserInfo:function(e){
+    console.log(e)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

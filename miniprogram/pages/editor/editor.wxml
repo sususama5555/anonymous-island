@@ -1,6 +1,6 @@
 <!--pages/editor/editor.wxml-->
 
-<cu-custom bgColor="bg-gradual-pink">
+<cu-custom bgColor="bg-gradual-blue">
 	<view slot="content">解忧小树屋</view>
 </cu-custom>
 
@@ -40,4 +40,9 @@
 			<text class="cuIcon-cameraadd"></text>
 		</view>
 	</view>
+</view>
+
+
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-green lg">发布</button>
 </view>

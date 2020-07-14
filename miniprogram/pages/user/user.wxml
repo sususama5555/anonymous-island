@@ -1,5 +1,54 @@
 <!--miniprogram/pages/user/user.wxml-->
-<cu-custom bgColor="bg-gradual-pink">
-	<view slot="content">解忧小树屋</view>
-</cu-custom>
+<view class="UCenter-bg">
+	<!-- <image src="{{user.ava}}" class="png" mode="widthFix"></image> -->
+	<view class='user-avatar'>
+		<open-data type='userAvatarUrl'></open-data>
+	</view>
+	<view class="text-xl">
+		<open-data type='userNickName'></open-data>
+	</view>
+	<view class="margin-top-sm">
+		<text>这个主人很懒，什么都没有留下~</text>
+	</view>
+	<image src="https://cdn.jsdelivr.net/gh/Ddoudou/dd/src/static/img/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+	<view class="flex flex-sub flex-direction solid-right">
+		<view class="text-xxl text-orange">{{user.sdCount}}</view>
+		<view class="margin-top-sm">
+			<text class="cuIcon-attentionfill"></text>树洞</view>
+	</view>
+	<view class="flex flex-sub flex-direction solid-right">
+		<view class="text-xxl text-blue">{{user.reviewCount}}</view>
+		<view class="margin-top-sm">
+			<text class="cuIcon-favorfill"></text>评论</view>
+	</view>
+	<view class="flex flex-sub flex-direction">
+		<view class="text-xxl text-green">{{user.starCount}}</view>
+		<view class="margin-top-sm">
+			<text class="cuIcon-fork"></text>收藏</view>
+	</view>
+</view>
 
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+	<view class="cu-item arrow">
+		<button class="cu-btn content" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+			<text class="cuIcon-friendfill text-cyan"></text>
+			<text class="text-grey">登录</text>
+		</button>
+	</view>
+</view>
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+	<view class="cu-item arrow">
+		<button class="cu-btn content" open-type="feedback">
+			<text class="cuIcon-writefill text-cyan"></text>
+			<text class="text-grey">意见反馈</text>
+		</button>
+	</view>
+	<view class="cu-item arrow">
+		<button class="cu-btn content" open-type="contact">
+			<text class="cuIcon-flashbuyfill text-cyan"></text>
+			<text class="text-grey">联系我们</text>
+		</button>
+	</view>
+</view>
