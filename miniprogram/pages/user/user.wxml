@@ -1,14 +1,12 @@
 <!--miniprogram/pages/user/user.wxml-->
 <view class="UCenter-bg">
 	<!-- <image src="{{user.ava}}" class="png" mode="widthFix"></image> -->
-	<view class='user-avatar'>
-		<open-data type='userAvatarUrl'></open-data>
-	</view>
+		<view class="cu-avatar xl round" style="background-image:url({{user.userInfo.avatarUrl}});"></view>
 	<view class="text-xl">
-		<open-data type='userNickName'></open-data>
+		{{user.userInfo.nickName}}
 	</view>
 	<view class="margin-top-sm">
-		<text>这个主人很懒，什么都没有留下~</text>
+		<text>{{user.status}}</text>
 	</view>
 	<image src="https://cdn.jsdelivr.net/gh/Ddoudou/dd/src/static/img/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
