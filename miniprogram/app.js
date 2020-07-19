@@ -2,7 +2,8 @@
 App({
   globalData:{
     StatusBar:'',
-    windowHeight:''
+    windowHeight:'',
+    openid:''
   },
 
   onLaunch: function () {
@@ -29,5 +30,12 @@ App({
         traceUser: true,
       })
     }
+
+    wx.cloud.callFunction({
+      name:'login',
+      success:res=>{
+        this.globalData.openid = res.result.openid
+      }
+    })
   }
 })

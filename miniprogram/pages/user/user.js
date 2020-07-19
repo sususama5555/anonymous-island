@@ -1,4 +1,5 @@
 // miniprogram/pages/user/user.js
+const app = getApp()
 Page({
 
   /**
@@ -6,9 +7,11 @@ Page({
    */
   data: {
     user:{
-      sdCount:99,
-      reviewCount:98,
-      starCount:97
+      openid:'openid',
+      userInfo:{
+        nickName:'请先登录'
+      },
+      status:'这个人很懒，什么都没有留下~'
     }
 
   },
@@ -21,7 +24,12 @@ Page({
   },
 
   getUserInfo:function(e){
-    console.log(e)
+    let user = this.data.user
+    user.userInfo = e.detail.userInfo;
+    user.openid = app.globalData.openid;
+    this.setData({
+      user:user
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
