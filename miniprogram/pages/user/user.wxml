@@ -3,7 +3,7 @@
 	<!-- <image src="{{user.ava}}" class="png" mode="widthFix"></image> -->
 		<view class="cu-avatar xl round" style="background-image:url({{user.userInfo.avatarUrl}});"></view>
 	<view class="text-xl">
-		{{user.userInfo.nickName}}
+		{{user.fakeName}}
 	</view>
 	<view class="margin-top-sm">
 		<text>{{user.status}}</text>
