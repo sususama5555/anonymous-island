@@ -47,6 +47,9 @@ App({
       method:'GET',
       success:res=>{
         this.globalData.user.fakeName = res.data.fakename;
+      },
+      fail:res=>{
+
       }
     })
   }

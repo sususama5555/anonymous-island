@@ -1,13 +1,8 @@
 // pages/editor/editor.js
 let app = getApp()
 var mood = {
- is_deleted:false,
  content:'',
- image:'',
- click_counter:0,
- comment_counter:0,
- like_counter:0,
- user:'',     
+ user:12313122     
 }
 Page({
 
@@ -30,28 +25,27 @@ Page({
 
     if(text){
       mood.content = text;
-      mood.openid = app.globalData.openid;
-      mood.image = this.data.imgList[0];
-      console.log(mood.image)
+      // mood.openid = app.globalData.openid;
+      // mood.image = this.data.imgList[0];
+      console.log(mood)
 
-      wx.uploadFile({
-        filePath: mood.image,
-        name: '12313.jpg',
-        url: 'https://api.ddoudou.xyz/api/moods/image',
-        formData:mood,
-        success:res=>{
-          console.log(res)
-        }
-      })
-
-      // wx.request({
-      //   url: 'https://api.ddoudou.xyz/api/my_moods',
-      //   method:'POST',
-      //   data:mood,
+      // wx.uploadFile({
+      //   filePath: mood.image,
+      //   name: 'image',
+      //   url: 'https://api.ddoudou.xyz/media/',
       //   success:res=>{
       //     console.log(res)
       //   }
       // })
+
+      wx.request({
+        url: 'https://api.ddoudou.xyz/api/moods/',
+        method:'POST',
+        data:mood,
+        success:res=>{
+          console.log(res)
+        }
+      })
     }
     else{
       wx.showModal({
