@@ -3,7 +3,11 @@ App({
   globalData:{
     StatusBar:'',
     windowHeight:'',
-    openid:''
+    user:{
+      openid:'',
+      ava:'',
+      fakeName:''
+    }
   },
 
   onLaunch: function () {
@@ -34,7 +38,15 @@ App({
     wx.cloud.callFunction({
       name:'login',
       success:res=>{
-        this.globalData.openid = res.result.openid
+        this.globalData.user.openid = res.result.openid
+      }
+    })
+    
+    wx.request({
+      url: 'https://api.ddoudou.xyz/api/users/1231312',
+      method:'GET',
+      success:res=>{
+        this.globalData.user.fakeName = res.data.fakename;
       }
     })
   }

@@ -6,11 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user:{
+    user: {
       openid:'openid',
-      userInfo:{
-        nickName:'请先登录'
-      },
+      fakeName:'',
+      ava:'',
       status:'这个人很懒，什么都没有留下~'
     }
 
@@ -20,15 +19,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
-
-  getUserInfo:function(e){
-    let user = this.data.user
-    user.userInfo = e.detail.userInfo;
-    user.openid = app.globalData.openid;
+    var user = this.data.user;
+    user.fakeName = app.globalData.user.fakeName;
     this.setData({
       user:user
+    })
+  },
+
+  getUserInfo: function (e) {
+    var user = {
+      openid:'',
+      is_deleted:false,
+      username:'',
+      fakename:''
+    };
+
+    console.log(e.detail)
+    user.openid = 1231312;
+    user.username = e.detail.userInfo.nickName;
+    user.fakename = '胖胖'+ (Math.round(Math.random()*(9999-1000))+1000);
+
+    wx.request({
+      url: 'https://api.ddoudou.xyz/api/users/',
+      method: 'POST',
+      data: user,
+      success: res => {
+        console.log(res)
+      }
     })
   },
   /**

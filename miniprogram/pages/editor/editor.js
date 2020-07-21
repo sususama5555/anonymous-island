@@ -1,4 +1,14 @@
 // pages/editor/editor.js
+let app = getApp()
+var mood = {
+ is_deleted:false,
+ content:'',
+ image:'',
+ click_counter:0,
+ comment_counter:0,
+ like_counter:0,
+ user:'',     
+}
 Page({
 
   /**
@@ -14,9 +24,45 @@ Page({
   onLoad: function (options) {
   },
 
+  sendArticle:function(e){
+    console.log(e)
+    var text = e.detail.value.text;
+
+    if(text){
+      mood.content = text;
+      mood.openid = app.globalData.openid;
+      mood.image = this.data.imgList[0];
+      console.log(mood.image)
+
+      wx.uploadFile({
+        filePath: mood.image,
+        name: '12313.jpg',
+        url: 'https://api.ddoudou.xyz/api/moods/image',
+        formData:mood,
+        success:res=>{
+          console.log(res)
+        }
+      })
+
+      // wx.request({
+      //   url: 'https://api.ddoudou.xyz/api/my_moods',
+      //   method:'POST',
+      //   data:mood,
+      //   success:res=>{
+      //     console.log(res)
+      //   }
+      // })
+    }
+    else{
+      wx.showModal({
+        title:'请检查输入完整性！',
+        content:'内容缺失',
+      })
+    }
+  },
   ChooseImage() {
     wx.chooseImage({
-      count: 4, //默认9
+      count: 1, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
