@@ -1,6 +1,7 @@
 //app.js
 App({
   globalData:{
+    baseUrl:'https://api.ddoudou.xyz/api/',
     StatusBar:'',
     windowHeight:'',
     user:{
@@ -43,7 +44,7 @@ App({
     })
     
     wx.request({
-      url: 'https://api.ddoudou.xyz/api/users/1231312',
+      url: this.globalData.baseUrl+'users/1231312',
       method:'GET',
       success:res=>{
         this.globalData.user.fakeName = res.data.fakename;

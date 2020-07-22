@@ -1,36 +1,19 @@
 // miniprogram/pages/index/index.js
+const baseUrl = getApp().globalData.baseUrl
+var pageNum = 1
+var maxPageNum = 1
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cardList: [{
-        avatar: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-        name: '胖胖',
-        createDate: [2020, 1, 1],
-        info: '折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！',
-        image: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-        starTag:'true',
-        watchNum:99,
-        starNum:88,
-        reviewNum:77
-      },
-      {
-        avatar: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
-        name: '胖胖2',
-        createDate: [2020, 1, 1],
-        info: '折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！',
-        watchNum:66,
-        starNum:55,
-        reviewNum:44
-      }
-    ]
+    cardList: [],
   },
 
-  toReview:function(){
+  toReview: function (e) {
     wx.navigateTo({
-      url: '/pages/review/review?arcID="213"'
+      url: '/pages/review/review?arcID=' + e.currentTarget.dataset.id
     })
   },
 
@@ -38,6 +21,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.getMoodsList(pageNum)
+  },
+
+  getMoodsList: function (pageNum) {
+    var cardList = this.data.cardList;
+    var that = this;
+    if (pageNum <= maxPageNum) {
+      wx.request({
+        url: baseUrl + 'moods/',
+        method: 'GET',
+        data: {
+          page: pageNum
+        },
+        success: res => {
+          console.log(res);
+          maxPageNum = Math.ceil(res.data.count / 5)
+          cardList = cardList.concat(res.data.results);
+          cardList.forEach(function (value) {
+            wx.request({
+              url: baseUrl + 'users/' + value.user,
+              method: 'GET',
+              success: res => {
+                value.userName = res.data.fakename;
+                that.setData({
+                  cardList: cardList
+                })
+                wx.hideLoading()
+              }
+            })
+          })
+        }
+      })
+    }
 
   },
   /**
@@ -79,7 +98,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    pageNum++;
+    this.getMoodsList(pageNum)
   },
 
   /**

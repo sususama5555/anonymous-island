@@ -17,7 +17,7 @@
 		</view>
 	</view>
 	<view class="cu-form-group" style="height:200px">
-		<textarea name='text' maxlength="-1" placeholder="随便写点什么吧..." auto-height auto-focus style="min-height:100%"></textarea>
+		<textarea name='text' value="{{textContent}}" maxlength="-1" placeholder="随便写点什么吧..." auto-height auto-focus style="min-height:100%"></textarea>
 	</view>
 
 	<view class="cu-bar bg-white">
@@ -36,7 +36,7 @@
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
@@ -45,5 +45,6 @@
 
 	<view class="padding flex flex-direction">
 		<button class="cu-btn bg-green lg" form-type="submit">发布</button>
+		<button class="cu-btn bg-red lg margin-top" form-type="reset">重置</button>
 	</view>
 </form>

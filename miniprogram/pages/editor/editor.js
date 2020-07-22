@@ -1,5 +1,6 @@
 // pages/editor/editor.js
-let app = getApp()
+const app = getApp()
+const baseUrl = app.globalData.baseUrl
 var mood = {
  content:'',
  user:12313122     
@@ -10,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    textContent:'',
     imgList: [],
   },
 
@@ -19,31 +21,33 @@ Page({
   onLoad: function (options) {
   },
 
+  resetContent:function(){
+    this.setData({
+      imgList:[],
+      textContent:''
+    })
+  },
+
   sendArticle:function(e){
-    console.log(e)
     var text = e.detail.value.text;
 
     if(text){
       mood.content = text;
-      // mood.openid = app.globalData.openid;
-      // mood.image = this.data.imgList[0];
-      console.log(mood)
-
-      // wx.uploadFile({
-      //   filePath: mood.image,
-      //   name: 'image',
-      //   url: 'https://api.ddoudou.xyz/media/',
-      //   success:res=>{
-      //     console.log(res)
-      //   }
-      // })
-
-      wx.request({
-        url: 'https://api.ddoudou.xyz/api/moods/',
-        method:'POST',
-        data:mood,
+      wx.uploadFile({
+        filePath: this.data.imgList[0],
+        name: 'image',
+        url: baseUrl+'moods/',
+        formData:mood,
+        header:{
+          "content-Type":"multipart/form-data",
+        },
         success:res=>{
-          console.log(res)
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 2000
+          })
+          this.resetContent()
         }
       })
     }
@@ -51,6 +55,7 @@ Page({
       wx.showModal({
         title:'请检查输入完整性！',
         content:'内容缺失',
+        showCancel:false
       })
     }
   },

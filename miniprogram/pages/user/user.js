@@ -1,5 +1,6 @@
 // miniprogram/pages/user/user.js
 const app = getApp()
+const baseUrl = app.globalData.baseUrl
 Page({
 
   /**
@@ -40,7 +41,7 @@ Page({
     user.fakename = '胖胖'+ (Math.round(Math.random()*(9999-1000))+1000);
 
     wx.request({
-      url: 'https://api.ddoudou.xyz/api/users/',
+      url: baseUrl+'users/',
       method: 'POST',
       data: user,
       success: res => {
