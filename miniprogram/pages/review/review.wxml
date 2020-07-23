@@ -4,7 +4,7 @@
 </cu-custom>
 
 
-<view class="cu-card dynamic no-card">
+<view class="cu-card dynamic no-card pp-content">
 	<view class="cu-item shadow">
 		<view class="cu-list menu-avatar">
 			<view class="cu-item">
@@ -18,7 +18,7 @@
 			</view>
 		</view>
 		<view class="text-content">
-		{{mood.content}}
+			{{mood.content}}
 		</view>
 		<view class="grid flex-sub padding-lr col-1" bindtap="ViewImage" data-url="{{mood.image}}">
 			<view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{mood.image}});" wx:for="{{isCard?9:1}}" wx:key="index">
@@ -76,6 +76,34 @@
 					</view>
 				</view>
 			</view>
+			<view class="cu-item">
+				<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+				<view class="content">
+					<view class="text-grey">凯尔</view>
+					<view class="text-gray text-content text-df">
+						妹妹，如果不是为了飞翔，我们要这翅膀有什么用?
+					</view>
+					<view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+						<view class="flex">
+							<view>莫甘娜：</view>
+							<view class="flex-sub">如果不能立足于大地，要这双脚又有何用?</view>
+						</view>
+					</view>
+					<view class="margin-top-sm flex justify-between">
+						<view class="text-gray text-df">2018年12月4日</view>
+						<view>
+							<text class="cuIcon-appreciate text-gray"></text>
+							<text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 	</view>
+</view>
+
+
+<view class="cu-form-group review-input solid-top" >
+	<textarea placeholder="说点什么吧......"></textarea>
+	<button class="cu-btn bg-blue shadow">发送</button>
 </view>

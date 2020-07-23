@@ -1,4 +1,9 @@
 <!--miniprogram/pages/index/index.wxml-->
+
+<import src="index.skeleton.wxml" />
+<template is="skeleton" wx-if="{{loading}}" />
+
+
 <cu-custom bgColor="bg-gradual-blue">
 	<view slot="content">解忧小树屋</view>
 </cu-custom>
@@ -6,27 +11,26 @@
 
 <block wx:for="{{cardList}}" wx:key="index">
 	<view class="cu-card dynamic isCard">
-		<view class="cu-item shadow">
-			<view bindtap="toReview" data-id="{{item.id}}">
-				<view class="cu-list menu-avatar">
-					<view class="cu-item">
-						<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
-						<view class="content flex-sub">
-							<view>{{item.userName}}</view>
-							<view class="text-gray text-sm flex justify-between">
-								<!-- {{item.createDate[0]}}年{{item.createDate[1]}}月{{item.createDate[2]}}日 -->
-								{{item.create_at}}
-							</view>
+		<view class="cu-item shadow" bindtap="toReview" data-id="{{item.id}}">
+			<view class="cu-list menu-avatar">
+				<view class="cu-item">
+					<view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+					<view class="content flex-sub">
+						<view>{{item.userName}}</view>
+						<view class="text-gray text-sm flex justify-between">
+							<!-- {{item.createDate[0]}}年{{item.createDate[1]}}月{{item.createDate[2]}}日 -->
+							{{item.create_at}}
 						</view>
 					</view>
 				</view>
-				<view class="text-content">
-					{{item.content}}
-				</view>
-				<view class="grid flex-sub padding-lr col-1">
-					<view class="bg-img only-img" style="background-image:url({{item.image}});" wx:if="{{item.image}}">
-					</view>
-				</view>
+			</view>
+			<view class="text-content">
+				{{item.content}}
+			</view>
+			<view class="grid flex-sub padding-lr col-1">
+				<image class="bg-img only-img" src="{{item.image}}" wx:if="{{item.image}}" lazy-load="true" mode="aspectFill"></image>
+				<!-- <view class="bg-img only-img" style="background-image:url({{item.image}});" wx:if="{{item.image}}">
+					</view> -->
 			</view>
 			<view class="text-gray text-sm text-right padding">
 				<text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.click_counter}}

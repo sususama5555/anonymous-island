@@ -1,0 +1,108 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/7/23 下午5:10:50 
+使用方法：
+在 pages\index\index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 pages\index\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view is="colorui/components/cu-custom">
+      <view class="cu-custom custom--cu-custom" style="height:84px">
+        <view class="cu-bar custom--cu-bar fixed custom--fixed bg-gradual-blue custom--bg-gradual-blue sk-image" style="height:84px;padding-top:44px;">
+          <view class="content custom--content" style="top:44px">
+            <view class="sk-transparent sk-text-23-3333-608 sk-text" style="background-position-x: 50%;">
+              解忧小树屋
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-card dynamic isCard">
+      <view class="cu-item shadow">
+        <view data-id="1">
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url();">
+              </view>
+              <view class="content flex-sub">
+                <view class="sk-transparent sk-text-16-5179-734 sk-text">
+                  胖胖5527
+                </view>
+                <view class="text-gray text-sm flex justify-between sk-transparent sk-text-23-2143-31 sk-text">
+                  2020-07-21 09:40:35
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text-content sk-transparent sk-text-18-7500-21 sk-text">
+            hhhhh
+          </view>
+          <view class="grid flex-sub padding-lr col-1">
+            <view class="bg-img only-img sk-image" style="background-image:url(https://api.ddoudou.xyz/api/moods/media/12313122200721-0935.png);">
+            </view>
+          </view>
+        </view>
+        <view class="text-gray text-sm text-right padding sk-transparent">
+          <text class="cuIcon-attentionfill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          31
+          <text class="cuIcon-appreciatefill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          0
+          <text class="cuIcon-messagefill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          0
+        </view>
+      </view>
+    </view>
+    <view class="cu-card dynamic isCard">
+      <view class="cu-item shadow">
+        <view data-id="2">
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url();">
+              </view>
+              <view class="content flex-sub">
+                <view class="sk-transparent sk-text-16-5179-284 sk-text">
+                  胖胖5527
+                </view>
+                <view class="text-gray text-sm flex justify-between sk-transparent sk-text-23-2143-366 sk-text">
+                  2020-07-21 13:07:31
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text-content sk-transparent sk-text-18-7500-284 sk-text">
+            1
+          </view>
+          <view class="grid flex-sub padding-lr col-1">
+            <view class="bg-img only-img sk-image" style="background-image:url(https://api.ddoudou.xyz/api/moods/media/12313122200721-1331.jpg);">
+            </view>
+          </view>
+        </view>
+        <view class="text-gray text-sm text-right padding sk-transparent">
+          <text class="cuIcon-attentionfill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          5
+          <text class="cuIcon-appreciatefill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          1
+          <text class="cuIcon-messagefill margin-lr-xs sk-pseudo sk-pseudo-circle">
+          </text>
+          1
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

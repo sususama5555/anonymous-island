@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:true,
     cardList: [],
   },
 
@@ -48,8 +49,10 @@ Page({
               success: res => {
                 value.userName = res.data.fakename;
                 that.setData({
-                  cardList: cardList
+                  cardList: cardList,
+                  loading:false
                 })
+                
                 wx.hideLoading()
               }
             })
