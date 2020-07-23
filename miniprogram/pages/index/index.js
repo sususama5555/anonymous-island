@@ -26,7 +26,7 @@ Page({
     })
     this.getMoodsList(pageNum)
   },
-
+  
   getMoodsList: function (pageNum) {
     var cardList = this.data.cardList;
     var that = this;

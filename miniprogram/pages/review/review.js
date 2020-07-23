@@ -9,6 +9,14 @@ Page({
     mood:{}
   },
 
+  ViewImage(e) {
+    var urls =[]
+    urls[0]=e.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: urls,
+      current: e.currentTarget.dataset.url
+    });
+  },
   getMood:function(e){
     // var mood = this.data.mood;
     wx.request({

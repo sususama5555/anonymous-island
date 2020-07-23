@@ -20,7 +20,7 @@
 		<view class="text-content">
 		{{mood.content}}
 		</view>
-		<view class="grid flex-sub padding-lr col-1">
+		<view class="grid flex-sub padding-lr col-1" bindtap="ViewImage" data-url="{{mood.image}}">
 			<view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{mood.image}});" wx:for="{{isCard?9:1}}" wx:key="index">
 			</view>
 		</view>

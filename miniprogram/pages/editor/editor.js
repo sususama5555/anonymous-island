@@ -2,8 +2,8 @@
 const app = getApp()
 const baseUrl = app.globalData.baseUrl
 var mood = {
- content:'',
- user:12313122     
+  content: '',
+  user: 12313122
 }
 Page({
 
@@ -11,51 +11,58 @@ Page({
    * 页面的初始数据
    */
   data: {
-    textContent:'',
+    textContent: '',
     imgList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  },
+  onLoad: function (options) {},
 
-  resetContent:function(){
+  resetContent: function () {
     this.setData({
-      imgList:[],
-      textContent:''
+      imgList: [],
+      textContent: ''
     })
   },
 
-  sendArticle:function(e){
+  sendArticle: function (e) {
+
+    wx.showLoading({
+      title: '发布中...',
+    })
     var text = e.detail.value.text;
 
-    if(text){
+    if (text) {
       mood.content = text;
       wx.uploadFile({
         filePath: this.data.imgList[0],
         name: 'image',
-        url: baseUrl+'moods/',
-        formData:mood,
-        header:{
-          "content-Type":"multipart/form-data",
+        url: baseUrl + 'moods/',
+        formData: mood,
+        header: {
+          "content-Type": "multipart/form-data",
         },
-        success:res=>{
-          wx.showToast({
-            title: '发布成功',
-            icon: 'success',
-            duration: 2000
+        success: res => {
+          wx.hideLoading({
+            success: (res) => {
+
+              wx.showToast({
+                title: '发布成功',
+                icon: 'success',
+                duration: 2000
+              })
+              this.resetContent()
+            },
           })
-          this.resetContent()
         }
       })
-    }
-    else{
+    } else {
       wx.showModal({
-        title:'请检查输入完整性！',
-        content:'内容缺失',
-        showCancel:false
+        title: '请检查输入完整性！',
+        content: '内容缺失',
+        showCancel: false
       })
     }
   },
