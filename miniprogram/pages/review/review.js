@@ -1,14 +1,63 @@
 // miniprogram/pages/review/review.js
 const baseUrl = getApp().globalData.baseUrl
+var arcID
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mood:{}
+    reviewValue:'',
+    mood:{},
+    review:[]
   },
 
+  // 刷新
+  reset:function(){
+    this.setData({
+      reviewValue:'',
+      mood:{},
+      review:[]
+    })
+    this.getMood(arcID);
+    this.getReview(arcID);
+  },
+
+  // 获取评论内容
+  getReview:function(e){
+    var review = this.data.review
+    wx.request({
+      url: baseUrl+'comments/'+e,
+      method:"GET",
+      success:res=>{
+        console.log(res)
+        review.push(res.data)
+        this.setData({
+          review:review
+        })
+      }
+    })
+  },
+
+  // 发送评论
+  sendReview:function(e){
+    var review={};
+    review.content = e.detail.value.content;
+    review.mood = this.data.mood.id;
+    review.user = 12313122;
+
+    wx.request({
+      url: baseUrl+'comments/',
+      method:'POST',
+      data:review,
+      success:res=>{
+        this.reset()
+      }
+    })
+
+  },
+
+  // 全屏预览图片
   ViewImage(e) {
     var urls =[]
     urls[0]=e.currentTarget.dataset.url;
@@ -17,6 +66,8 @@ Page({
       current: e.currentTarget.dataset.url
     });
   },
+
+  // 获取Mood内容
   getMood:function(e){
     // var mood = this.data.mood;
     wx.request({
@@ -33,7 +84,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMood(options.arcID)
+    arcID = options.arcID
+    this.getMood(arcID)
+    this.getReview(arcID)
   },
 
   /**
