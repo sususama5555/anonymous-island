@@ -31,6 +31,7 @@ Page({
 
     wx.showLoading({
       title: '发布中...',
+      mask:true
     })
     var text = e.detail.value.text;
 

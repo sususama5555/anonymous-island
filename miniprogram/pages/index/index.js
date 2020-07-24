@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading:true,
+    loading: true,
     cardList: [],
   },
 
@@ -21,13 +21,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+
+  reGetList: function () {
+    this.setData({
+      loading: true,
+      cardList: []
+    })
     wx.showLoading({
       title: '加载中',
     })
     this.getMoodsList(pageNum)
   },
-  
+  onLoad: function (options) {
+    this.reGetList()
+  },
+
   getMoodsList: function (pageNum) {
     var cardList = this.data.cardList;
     var that = this;
@@ -48,12 +56,13 @@ Page({
               method: 'GET',
               success: res => {
                 value.userName = res.data.fakename;
+                that.data.loading == true ? wx.hideLoading() : ''
                 that.setData({
                   cardList: cardList,
-                  loading:false
+                  loading: false
                 })
-                
-                wx.hideLoading()
+
+                wx.stopPullDownRefresh()
               }
             })
           })
@@ -94,7 +103,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.reGetList()
   },
 
   /**
