@@ -1,5 +1,5 @@
 <!--miniprogram/pages/review/review.wxml-->
-<cu-custom bgColor="bg-gradual-blue" isBack>
+<cu-custom bgColor="bg-blue" isBack>
 	<view slot="content">解忧小树屋</view>
 </cu-custom>
 

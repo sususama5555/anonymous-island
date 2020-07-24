@@ -1,6 +1,6 @@
 <!--pages/editor/editor.wxml-->
 
-<cu-custom bgColor="bg-gradual-blue">
+<cu-custom bgColor="bg-blue">
 	<view slot="content">解忧小树屋</view>
 </cu-custom>
 

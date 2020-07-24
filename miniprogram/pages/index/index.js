@@ -18,24 +18,13 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
 
+  // 重新获取列表
   reGetList: function () {
-    this.setData({
-      loading: true,
-      cardList: []
-    })
-    wx.showLoading({
-      title: '加载中',
-    })
-    this.getMoodsList(pageNum)
+    this.getMoodsList(1)
   },
-  onLoad: function (options) {
-    this.reGetList()
-  },
-
+  
+  // 获取列表
   getMoodsList: function (pageNum) {
     var cardList = this.data.cardList;
     var that = this;
@@ -47,9 +36,9 @@ Page({
           page: pageNum
         },
         success: res => {
-          console.log(res);
+          console.log(pageNum);
           maxPageNum = Math.ceil(res.data.count / 5)
-          cardList = cardList.concat(res.data.results);
+          pageNum == 1?cardList=res.data.results:cardList=cardList.concat(res.data.results);
           cardList.forEach(function (value) {
             wx.request({
               url: baseUrl + 'users/' + value.user,
@@ -70,6 +59,17 @@ Page({
       })
     }
 
+  },
+
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.reGetList()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
