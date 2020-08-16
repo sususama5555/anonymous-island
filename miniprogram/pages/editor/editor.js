@@ -15,11 +15,6 @@ Page({
     imgList: [],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {},
-
   resetContent: function () {
     this.setData({
       imgList: [],
@@ -28,7 +23,6 @@ Page({
   },
 
   sendArticle: function (e) {
-
     wx.showLoading({
       title: '发布中...',
       mask:true
@@ -48,7 +42,6 @@ Page({
         success: res => {
           wx.hideLoading({
             success: (res) => {
-
               wx.showToast({
                 title: '发布成功',
                 icon: 'success',
@@ -67,6 +60,8 @@ Page({
       })
     }
   },
+
+  // 选择图片
   ChooseImage() {
     wx.chooseImage({
       count: 1, //默认9
@@ -85,12 +80,16 @@ Page({
       }
     });
   },
+
+  // 全屏预览图片
   ViewImage(e) {
     wx.previewImage({
       urls: this.data.imgList,
       current: e.currentTarget.dataset.url
     });
   },
+
+  // 删除已选择图片
   DelImg(e) {
     wx.showModal({
       title: '提示',
@@ -107,6 +106,12 @@ Page({
       }
     })
   },
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -26,7 +26,7 @@
 		</view>
 
 
-		<view class="cu-list menu-avatar comment solids-top">
+		<view class="cu-list menu-avatar comment solids-top margin-top">
 
 			<view class="cu-bar bg-white">
 				<view class="action">

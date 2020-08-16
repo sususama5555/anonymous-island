@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+const app = getApp()
 const baseUrl = getApp().globalData.baseUrl
 var pageNum = 1
 var maxPageNum = 1
@@ -23,49 +24,46 @@ Page({
   reGetList: function () {
     this.getMoodsList(1)
   },
-  
+
   // 获取列表
   getMoodsList: function (pageNum) {
     var cardList = this.data.cardList;
     var that = this;
     if (pageNum <= maxPageNum) {
-      wx.request({
-        url: baseUrl + 'moods/',
-        method: 'GET',
-        data: {
-          page: pageNum
-        },
-        success: res => {
-          console.log(pageNum);
-          maxPageNum = Math.ceil(res.data.count / 5)
-          pageNum == 1?cardList=res.data.results:cardList=cardList.concat(res.data.results);
-          cardList.forEach(function (value) {
-            wx.request({
-              url: baseUrl + 'users/' + value.user,
-              method: 'GET',
-              success: res => {
-                value.userName = res.data.fakename;
-                that.data.loading == true ? wx.hideLoading() : ''
-                that.setData({
-                  cardList: cardList,
-                  loading: false
-                })
+      app.func.ppApi('moods', {
+        page: pageNum
+      }, 'GET', res => {
+        console.log(pageNum);
+        maxPageNum = Math.ceil(res.count / 5)
+        pageNum == 1 ? cardList = res.results : cardList = cardList.concat(res.results);
 
-                wx.stopPullDownRefresh()
-              }
-            })
+        // SB行为
+        cardList.forEach(function (value) {
+          wx.request({
+            url: baseUrl + 'users/' + value.user,
+            method: 'GET',
+            success: res => {
+              value.userName = res.data.fakename;
+              that.data.loading == true ? wx.hideLoading() : ''
+              that.setData({
+                cardList: cardList,
+                loading: false
+              })
+              wx.stopPullDownRefresh()
+            }
           })
-        }
+        })
       })
     }
 
   },
 
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     wx.showLoading({
       title: '加载中',
     })

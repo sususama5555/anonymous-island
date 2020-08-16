@@ -1,4 +1,6 @@
 //app.js
+const api = require('./utils/api.js')
+
 App({
   globalData:{
     baseUrl:'https://api.ddoudou.xyz/api/',
@@ -9,6 +11,10 @@ App({
       ava:'',
       fakeName:''
     }
+  },
+
+  func:{
+    ppApi:api.ppApi,
   },
 
   onLaunch: function () {
