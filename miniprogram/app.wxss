@@ -57,9 +57,9 @@ page {
 }
 
 .userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
+  font-size: 42rpx;
+  color: white;
+  /*background-color: white;*/
   background-size: cover;
 }
 
