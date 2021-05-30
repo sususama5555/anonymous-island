@@ -13,6 +13,7 @@ Page({
   data: {
     textContent: '',
     imgList: [],
+    userInfo: {},
   },
 
   resetContent: function () {
@@ -29,8 +30,9 @@ Page({
     })
     var text = e.detail.value.text;
 
-    if (text) {
+    if (text && this.data.imgList.length) {
       mood.content = text;
+      mood.user = app.globalData.user.openid
       wx.uploadFile({
         filePath: this.data.imgList[0],
         name: 'image',
@@ -50,13 +52,29 @@ Page({
               this.resetContent()
             },
           })
+        },
+        fail: res => {
+          wx.showToast({
+            title: '发布失败',
+            icon: 'error',
+            duration: 2000
+          })
         }
       })
     } else {
-      wx.showModal({
-        title: '请检查输入完整性！',
-        content: '内容缺失',
-        showCancel: false
+      // wx.showModal({
+      //   title: '请检查输入完整性！',
+      //   content: '内容缺失',
+      //   showCancel: false
+      // })
+      wx.hideLoading({
+        success: (res) => {
+          wx.showToast({
+            title: '请检查输入完整性',
+            icon: 'error',
+            duration: 2000
+          })
+        },
       })
     }
   },
@@ -68,7 +86,7 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
+        if (this.data.imgList.length !== 0) {
           this.setData({
             imgList: this.data.imgList.concat(res.tempFilePaths)
           })
@@ -110,7 +128,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -123,7 +143,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
 
   /**
