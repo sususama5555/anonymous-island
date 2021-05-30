@@ -5,7 +5,7 @@
 
 
 <cu-custom bgColor="bg-blue">
-	<view slot="content">解忧小树屋</view>
+	<view slot="content">无人海岛</view>
 </cu-custom>
 
 
