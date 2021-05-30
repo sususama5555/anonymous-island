@@ -1,14 +1,25 @@
 <!--miniprogram/pages/user/user.wxml-->
 <view class="UCenter-bg">
-	<!-- <image src="{{user.ava}}" class="png" mode="widthFix"></image> -->
-		<view class="cu-avatar xl round" style="background-image:url({{user.userInfo.avatarUrl}});"></view>
-	<view class="text-xl">
-		{{user.fakeName}}
-	</view>
-	<view class="margin-top-sm">
-		<text>{{user.status}}</text>
-	</view>
-	<image src="https://cdn.jsdelivr.net/gh/Ddoudou/dd/src/static/img/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+<!--	<block wx:if="{{canIUseOpenData}}" class="userinfo-opendata">-->
+<!--		<view class="userinfo-avatar" bindtap="bindViewTap">-->
+<!--			<open-data type="userAvatarUrl"></open-data>-->
+<!--		</view>-->
+<!--		<open-data type="userNickName"></open-data>-->
+<!--	</block>-->
+<!--&lt;!&ndash;	 <image src="{{user.ava}}" class="png" mode="widthFix"></image>&ndash;&gt;-->
+<!--	<view class="cu-avatar xl round" style="background-image:url({{user.userInfo.avatarUrl}});"></view>-->
+<!--	<view class="text-xl">-->
+<!--		{{user.fakeName}}-->
+<!--	</view>-->
+<!--	<view class="margin-top-sm">-->
+<!--		<text>{{user.status}}</text>-->
+<!--	</view>-->
+<!--	<image src="https://cdn.jsdelivr.net/gh/Ddoudou/dd/src/static/img/wave.gif" mode="scaleToFill" class="gif-wave"></image>-->
+	<block>
+<!--		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>-->
+		<image class="cu-avatar round xl" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+		<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+	</block>
 </view>
 <view class="padding flex text-center text-grey bg-white shadow-warp">
 	<view class="flex flex-sub flex-direction solid-right">
@@ -30,7 +41,8 @@
 
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 	<view class="cu-item arrow">
-		<button class="cu-btn content" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+<!--		<button class="cu-btn content" open-type="getUserProfile" bindgetuserinfo="getUserProfile">-->
+		<button class="cu-btn content" bindtap="getUserProfile">
 			<text class="cuIcon-friendfill text-cyan"></text>
 			<text class="text-grey">登录</text>
 		</button>
